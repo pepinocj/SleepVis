@@ -1,0 +1,297 @@
+{
+    "diaryEntries": [ {
+        "date": "2016-04-10 00:00:00",
+        "entry": {
+            "day_diary": {
+                "LAATSTE_UUR": "was opzetten, wat lezen\n\n\n\n",
+                "AVOND": "koken eten, strijken, heen en weer naar Leuven",
+                "NET_VOOR_HET_SLAPENGAAN": "douche",
+                "MIDDAG": "lichte lunch",
+                "NAMIDDAG": "wat wandelen, middagdutje, huishouden",
+                "VOORMIDDAG": "naar bakker, ontbijt, boodschappen, wassen"
+            },
+            "sleep_times": [{
+                "start": "1970-01-01 06:00:00",
+                "label": "EMA",
+                "duration": 30
+            }, {
+                "start": "1970-01-01 23:00:00",
+                "label": "SOL",
+                "duration": 5
+            }]
+        }
+    }, {
+        "date": "2016-04-09 00:00:00",
+        "entry": {
+            "day_diary": {
+                "LAATSTE_UUR": "bad en lezen",
+                "AVOND": "resto gent en trein naar huis\n\n",
+                "NET_VOOR_HET_SLAPENGAAN": "tv",
+                "MIDDAG": "lunch gent",
+                "NAMIDDAG": "gent tentoonstelling + winkelen",
+                "VOORMIDDAG": "keuken opruimen en ontbijt\nmet trein nasr Gent"
+            },
+            "sleep_times": [{
+                "start": "1970-01-01 03:00:00",
+                "label": "WAKE",
+                "duration": 45
+            }, {
+                "start": "1970-01-01 08:00:00",
+                "label": "EMA",
+                "duration": 30
+            }, {
+                "start": "1970-01-01 00:00:00",
+                "label": "SOL",
+                "duration": 5
+            }]
+        }
+    }, {
+        "date": "2016-04-08 00:00:00",
+        "entry": {
+            "day_diary": {
+                "LAATSTE_UUR": "was opzetten, wat lezen\n\n\n\n",
+                "AVOND": "koken eten, strijken, heen en weer naar Leuven",
+                "NET_VOOR_HET_SLAPENGAAN": "douche",
+                "MIDDAG": "lichte lunch",
+                "NAMIDDAG": "wat wandelen, middagdutje, huishouden",
+                "VOORMIDDAG": "naar bakker, ontbijt, boodschappen, wassen"
+            },
+            "sleep_times": [{
+                "start": "1970-01-01 06:00:00",
+                "label": "EMA",
+                "duration": 30
+            }, {
+                "start": "1970-01-01 23:00:00",
+                "label": "SOL",
+                "duration": 5
+            }]
+        }
+    }, {
+        "date": "2016-04-07 00:00:00",
+        "entry": {
+            "day_diary": {
+                "LAATSTE_UUR": "bad end lezen",
+                "AVOND": "eten TV sport",
+                "NET_VOOR_HET_SLAPENGAAN": "keuken opruimen",
+                "MIDDAG": "lunch",
+                "NAMIDDAG": "idem gisteren",
+                "VOORMIDDAG": "idem gisteren"
+            },
+            "sleep_times": [{
+                "start": "1970-01-01 00:15:00",
+                "label": "WAKE",
+                "duration": 45
+            }, {
+                "start": "1970-01-01 06:30:00",
+                "label": "EMA",
+                "duration": 40
+            }, {
+                "start": "1970-01-01 23:30:00",
+                "label": "SOL",
+                "duration": 15
+            }]
+        }
+    }, {
+        "date": "2016-04-06 00:00:00",
+        "entry": {
+            "day_diary": {
+                "LAATSTE_UUR": "bad en lezen",
+                "AVOND": "naar Huis, koken, eten \nwat TV kijken",
+                "NET_VOOR_HET_SLAPENGAAN": "lezen",
+                "MIDDAG": "lunch op werk",
+                "NAMIDDAG": "werken",
+                "VOORMIDDAG": "ontbijt en met auto naar week."
+            },
+            "sleep_times": [{
+                "start": "1970-01-01 00:15:00",
+                "label": "WAKE",
+                "duration": 45
+            }, {
+                "start": "1970-01-01 06:30:00",
+                "label": "EMA",
+                "duration": 40
+            }, {
+                "start": "1970-01-01 22:30:00",
+                "label": "SOL",
+                "duration": 15
+            }]
+        }
+    }, {
+        "date": "2016-04-05 00:00:00",
+        "entry": {
+            "day_diary": {
+                "LAATSTE_UUR": "heen en weer naar leuven",
+                "AVOND": "naar huis, boodschappen, koken en eten",
+                "NET_VOOR_HET_SLAPENGAAN": "bad",
+                "MIDDAG": "lunch ter plaatse",
+                "NAMIDDAG": "zittend werk",
+                "VOORMIDDAG": "ontbijt, met auto naar werk, werken zittend"
+            },
+            "sleep_times": [{
+                "start": "1970-01-01 03:00:00",
+                "label": "WAKE",
+                "duration": 45
+            }, {
+                "start": "1970-01-01 06:30:00",
+                "label": "EMA",
+                "duration": 45
+            }, {
+                "start": "1970-01-01 00:00:00",
+                "label": "SOL",
+                "duration": 30
+            }]
+        }
+    }, {
+        "date": "2016-04-04 00:00:00",
+        "entry": {
+            "day_diary": {
+                "LAATSTE_UUR": "bad sauna",
+                "AVOND": "TV lezen ",
+                "NET_VOOR_HET_SLAPENGAAN": "lezen",
+                "MIDDAG": "koken eten",
+                "NAMIDDAG": "poetsen boodschappen",
+                "VOORMIDDAG": "poetsen"
+            },
+            "sleep_times": [{
+                "start": "1970-01-01 01:15:00",
+                "label": "WAKE",
+                "duration": 210
+            }, {
+                "start": "1970-01-01 06:30:00",
+                "label": "EMA",
+                "duration": 40
+            }, {
+                "start": "1970-01-01 22:15:00",
+                "label": "SOL",
+                "duration": 60
+            }]
+        }
+    }],
+    "events": [{
+        "duration": 90,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-10 14:00:00",
+        "label": "NAP"
+    }, {
+        "duration": 2,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-10 03:45:00",
+        "label": "TOILET"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-09 07:30:00",
+        "label": "ALCOHOL"
+    }, {
+        "duration": 2,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-09 01:00:00",
+        "label": "TOILET"
+    }, {
+        "duration": 150,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-08 20:00:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 2,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-08 05:45:00",
+        "label": "TOILET"
+    }, {
+        "duration": 45,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-07 21:00:00",
+        "label": "SPORT"
+    }, {
+        "duration": 40,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-07 20:08:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-07 19:00:00",
+        "label": "ALCOHOL"
+    }, {
+        "duration": 60,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-06 21:05:00",
+        "label": "READING"
+    }, {
+        "duration": 40,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-06 19:55:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-06 14:00:00",
+        "label": "COFFEE"
+    }, {
+        "duration": 2,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-06 03:45:00",
+        "label": "TOILET"
+    }, {
+        "duration": 2,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-06 03:00:00",
+        "label": "TOILET"
+    }, {
+        "duration": 30,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-05 20:45:00",
+        "label": "SPORT"
+    }, {
+        "duration": 30,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-05 20:15:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-05 19:30:00",
+        "label": "ALCOHOL"
+    }, {
+        "duration": 10,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-05 02:25:00",
+        "label": "WALKING"
+    }, {
+        "duration": 10,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-05 01:50:00",
+        "label": "WALKING"
+    }, {
+        "duration": 2,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-05 01:20:00",
+        "label": "TOILET"
+    }, {
+        "duration": 75,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-04 19:31:00",
+        "label": "TELEVISION"
+    }]
+}

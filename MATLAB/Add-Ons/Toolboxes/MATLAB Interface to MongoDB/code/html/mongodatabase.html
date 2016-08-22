@@ -1,0 +1,156 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>mongodatabase</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-08-28"><meta name="DC.source" content="aaaa.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>mongodatabase</h1><!--introduction--><p>Establish connection to a mongo database.</p><p>returns mongo database object.</p><!--/introduction--><pre class="codeinput">connect = mongodatabase(server, port, databasename)
+<span class="comment">%   With this syntax, it is assumed that the MONGO SERVER(s)</span>
+<span class="comment">%   doesn't expect a username and password to establish a connection</span>
+<span class="comment">%   And the USER has appropriate permissions to work on provided</span>
+<span class="comment">%   DATABASENAME</span>
+</pre><pre class="codeinput">connect = mongodatabase(server, port, databasename, <span class="string">'Name'</span>, <span class="string">'Value'</span>)
+<span class="comment">%   With this syntax it is assumed that MONGO server(s) expects a username and password</span>
+<span class="comment">%   and User is assumed to have READ/ WRITE permissions for selected databases only.</span>
+</pre><div><ul><li><b>server</b>: MATLAB CHAR or CELL of STRINGS used to specify one or more server names</li><li><b>port</b>: SCALAR or CELL ARRAY of DOUBLE to specify corresponding port number(s)</li><li><b>databasename</b>: MATLAB CHAR used to specify the database name</li><li><b>PARAM-VALUE pairs can be</b>:</li></ul></div><pre>   USERNAME:       USERNAME is a string used for authenticating a user for a given database name.</pre><pre>   PASSWORD:       PASSWORD is a string used for authenticating a user for a given username</pre><pre>   AUTHMECHANISM:  Can be one of the following:
+                   - PLAIN:       verifies user credentials using LDAP service
+                   - MONGODB_CR:  is a challenge-response mechanism that authenticates users through passwords
+                   - SCRAM_SHA_1: verifies supplied user credentials against the user's name, password and database.
+                   If not provided, Creates a MongoCredential instance with an unspecified mechanism.
+                   The client will negotiate the best mechanism based on the version of the server that the client is authenticating to.</pre><p><b>Example</b></p><pre class="codeinput">conn = mongodatabase(<span class="string">'localhost'</span>, 27017, <span class="string">'testdb'</span>)
+<span class="comment">% Establishes a connection to LOCALHOST and returns a MONGO DATABASE OBJECT</span>
+<span class="comment">% for database 'testdb'</span>
+</pre><pre class="codeinput">conn = mongodatabase(<span class="string">'localhost'</span>, 27017, testdb, <span class="string">'UserName'</span>, <span class="string">'testdbuser'</span>, <span class="string">'Password'</span>, <span class="string">'pass1'</span>)
+<span class="comment">% Establishes a connection to LOCALHOST,</span>
+<span class="comment">% authenticates 'testdbuser' against 'testdb'</span>
+<span class="comment">% Authentication Mechanism is negotiated between MATLAB and Mongo SERVER, and returns</span>
+</pre><pre class="codeinput">conn = mongodatabase({<span class="string">'localhost'</span>, <span class="string">'remotehost'</span>}, {27017, 27018}, testdb, <span class="string">'UserName'</span>, <span class="string">'testdbuser'</span>, <span class="string">'Password'</span>, <span class="string">'pass1'</span>)
+<span class="comment">% Establishes a connection to LOCALHOST and REMOTEHOST on PORT 27017 and 27018 respectively,</span>
+<span class="comment">% authenticates 'testdbuser' against 'testdb'</span>
+<span class="comment">% Authentication Mechanism is negotiated between MATLAB and Mongo SERVER, and returns</span>
+</pre><pre class="codeinput">conn = mongodatabase(<span class="string">'localhost'</span>, 27017, testdb, <span class="string">'UserName'</span>, <span class="string">'testdbuser'</span>, <span class="string">'Password'</span>, <span class="string">'pass1'</span>, <span class="string">'AuthMechanism'</span>, <span class="string">'MONGODB_CR'</span>)
+<span class="comment">% Establishes a connection to LOCALHOST on PORT 27017,</span>
+<span class="comment">% authenticates 'testdbuser' against 'testdb'</span>
+<span class="comment">% Authentication Mechanism used is 'MONGODB_CR'.</span>
+</pre><p class="footer">Copyright 2015 The MathWorks, Inc.<br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% mongodatabase 
+% Establish connection to a mongo database.
+%
+% returns mongo database object.
+%
+% Copyright 2015 The MathWorks, Inc.
+%%
+connect = mongodatabase(server, port, databasename)
+%   With this syntax, it is assumed that the MONGO SERVER(s) 
+%   doesn't expect a username and password to establish a connection
+%   And the USER has appropriate permissions to work on provided
+%   DATABASENAME
+%%
+connect = mongodatabase(server, port, databasename, 'Name', 'Value')
+%   With this syntax it is assumed that MONGO server(s) expects a username and password
+%   and User is assumed to have READ/ WRITE permissions for selected databases only. 
+%%
+% * *server*: MATLAB CHAR or CELL of STRINGS used to specify one or more server names
+% * *port*: SCALAR or CELL ARRAY of DOUBLE to specify corresponding port number(s)
+% * *databasename*: MATLAB CHAR used to specify the database name
+% * *PARAM-VALUE pairs can be*:
+%%
+%%
+%                                       
+%     USERNAME:       USERNAME is a string used for authenticating a user for a given database name.        
+%
+%     PASSWORD:       PASSWORD is a string used for authenticating a user for a given username       
+%
+%     AUTHMECHANISM:  Can be one of the following:
+%                     - PLAIN:       verifies user credentials using LDAP service  
+%                     - MONGODB_CR:  is a challenge-response mechanism that authenticates users through passwords
+%                     - SCRAM_SHA_1: verifies supplied user credentials against the user's name, password and database.
+%                     If not provided, Creates a MongoCredential instance with an unspecified mechanism. 
+%                     The client will negotiate the best mechanism based on the version of the server that the client is authenticating to.  
+%
+%%
+% *Example*
+%%
+conn = mongodatabase('localhost', 27017, 'testdb')
+% Establishes a connection to LOCALHOST and returns a MONGO DATABASE OBJECT
+% for database 'testdb'
+%%
+conn = mongodatabase('localhost', 27017, testdb, 'UserName', 'testdbuser', 'Password', 'pass1')
+% Establishes a connection to LOCALHOST,
+% authenticates 'testdbuser' against 'testdb'
+% Authentication Mechanism is negotiated between MATLAB and Mongo SERVER, and returns
+%%
+conn = mongodatabase({'localhost', 'remotehost'}, {27017, 27018}, testdb, 'UserName', 'testdbuser', 'Password', 'pass1')
+% Establishes a connection to LOCALHOST and REMOTEHOST on PORT 27017 and 27018 respectively,
+% authenticates 'testdbuser' against 'testdb'
+% Authentication Mechanism is negotiated between MATLAB and Mongo SERVER, and returns
+%%
+conn = mongodatabase('localhost', 27017, testdb, 'UserName', 'testdbuser', 'Password', 'pass1', 'AuthMechanism', 'MONGODB_CR')
+% Establishes a connection to LOCALHOST on PORT 27017,
+% authenticates 'testdbuser' against 'testdb'
+% Authentication Mechanism used is 'MONGODB_CR'.
+##### SOURCE END #####
+--></body></html>

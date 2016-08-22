@@ -1,0 +1,243 @@
+<meta charset="utf-8">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/thesis_demo.css">
+    <link rel="stylesheet" type="text/css" href="css/gantt.css">
+    <link rel="stylesheet" type="text/css" href="css/axis.css">
+    <link rel="stylesheet" type="text/css" href="css/parcoords.css">
+    <link rel="stylesheet" type="text/css" href="css/on_off_button.css">
+    <link rel="stylesheet" href="css/menuButtons.css">
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="css/loadScreen.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+    <script src="js/libs/moment/moment.js"></script>
+    <script src="js/libs/date-format.js"></script>
+    <script src="js/libs/jquery.scrollTo-2.1.2/jquery.scrollTo.min.js"></script>
+    <script src="js/libs/d3/d3.js"></script>
+    <script src="js/libs/d3/parcoord.js"></script>
+    <script src="js/libs/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+    <script src="js/libs/utils.js"></script>
+    <script src="js/parcoordfilter.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/collection_metrics.js"></script>
+    <script src="js/libs/d3/gantt-chart-d3v2.js"></script>
+    <script src="js/gantt.js"></script>
+    <script src="js/parallel_coordinates.js"></script>
+    <script src="js/contextGeneration.js"></script>
+
+    <script src="js/libs/nouislider.js"></script>
+    <script src="js/preprocessing.js"></script>
+    <script src="js/detailsFeature.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+
+    <!--http://cssload.net/en/spinners-->
+    <defs>
+
+
+        <pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+
+            <circle cx="1" cy="11" r="1" style="stroke: none; fill: #0000ff" />
+
+        </pattern>
+    </defs>
+
+
+    <!--http://cssmenumaker.com/menu/css3-drop-down-menu-->
+
+    <div id="dialogBox"></div>
+
+
+    <div id="floatingTooltip" class="hidden detailsCell">
+        <div class="floatingValue">
+            <p class="floatingValueText"></p>
+            <p class="floatingFeatureText"></p>
+            <p class="floatingTimeText"></p>
+            <svg width="50" height="10">
+                <rect class="floatingMovement" width="50" height="10"></rect>
+            </svg>
+            <p class="floatingMovementText"></p>
+        </div>
+        <div class="detailsCell vertical"></div>
+    </div>
+
+    <div id="floatingSubjectiveTooltip" class="hidden detailsCell">
+
+    </div>
+
+    <div id="floatingDiary" class="hidden detailsCell">
+        <div class="diaryBackground"></div>
+
+        <div id="diaryContainer">
+            <div id="hideDiaryButton">X</div>
+        </div>
+
+
+    </div>
+
+
+    <div id="controllerContainer" style="z-index:50;">
+        <div id="controller">
+            <div id='menu' class="controllerChild">
+                <div id="movementFeaturesSelectors" class="selectorsContainer hidden"></div>
+                <div id="heartFeaturesSelectors" class="selectorsContainer hidden"></div>
+                <div id="linesSelectors" class="selectorsContainer hidden"></div>
+                <div id="sortSelectors" class="selectorsContainer hidden"></div>
+                <div id="focusSelectors" class="selectorsContainer hidden"></div>
+
+                <button id="zoomButton" class="menuElement button hidden"><img src="Icons/looking_glass.png" alt="ERROR" style="width:30px;height:40px;"></button>
+
+                <div class="menuElement">
+                    <button id="objectiveDataButton" class="button"><img src="Icons/cardiology2.png" alt="ERROR" style="width:30px;height:40px;"></button>
+
+
+
+                </div>
+
+
+                <div class="menuElement">
+
+                    <button id="standingDataButton" class="button"><img src="Icons/sport.png" alt="ERROR" style="width:50px;height:40px;"></button>
+
+
+                </div>
+                <!--        <div id="subjectiveChartsButton" class="menuElement button"><img src="Icons/chart.jpg" alt="ERROR" style="width:50px;height:40px;"></div>-->
+
+                <div class="menuElement">
+                    <button id="switcherButton" class="button"><img src="Icons/switcher.png" alt="ERROR" style="width:50px;height:40px;"></button>
+
+                </div>
+
+                <div class="menuElement">
+                    <button id="journalFeaturesButton" class="button"><img src="Icons/notebook.png" alt="ERROR" style="width:50px;height:40px;"></button>
+
+                </div>
+
+                <div class="menuElement" style="float:left">
+                    <button id="sortButton" class="button"><img src="Icons/sort-descending.png" alt="ERROR" style="width:50px;height:40px;"></button>
+
+                </div>
+
+
+
+            </div>
+            <div id="overviewBox" class="controllerChild">
+                <div id="slider" class="controllerChild"></div>
+                <div id="detailsContainer" class="controllerChild controllerOverview hidden" style="border-style:solid"></div>
+
+                <div id="subjectiveOverviewContainer" class="controllerChild controllerOverview" style="border-style:solid"></div>
+            </div>
+
+            <div class="controllerChild onoffswitch" style=" margin:auto">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                <label class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+            </div>
+
+
+            <div id="subjDataContainer" class="controllerChild" style="width:100%;position:absolute;bottom: 0;">
+                <div id="subjectiveSelectedOverviewContainer" class="controllerChild" style="height:200px"></div>
+
+                <div id="dayDataContainer" class="controllerChild">
+                    <div class="inspectingText">
+                        <p style="float:left;">Day inspecting:</p>
+                        <p id="dayInspecting" style="float:left;"></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="parcoords controllerChild hidden" style="width:50%;left:50%;    bottom: 100px;
+    position: absolute;">
+                <div class="inspectingText">
+                    <p style="float:left;">Measured epoch (5 min): </p>
+                    <p id="epochInspecting" style="float:left;">None</p>
+                    <p></p>
+
+
+
+                </div>
+
+                <div id="parcoordsContainer" class="parcoords"></div>
+            </div>
+
+            <!--<li><a href='#'><span>Change view</span></a></li>-->
+            <!--<li class='active has-sub'><a href='#'><span>Features</span></a>-->
+            <!--<ul>-->
+            <!--<li class='has-sub'><a href='#'><span>Product 1</span></a>-->
+            <!--<ul>-->
+            <!--<li><a href='#'><span>Sub Product</span></a></li>-->
+            <!--<li class='last'><a href='#'><span>Sub Product</span></a></li>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <!--<li class='has-sub'><a href='#'><span>Product 2</span></a>-->
+            <!--<ul>-->
+            <!--<li><a href='#'><span>Sub Product</span></a></li>-->
+            <!--<li class='last'><a href='#'><span>Sub Product</span></a></li>-->
+            <!--</ul>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</li>-->
+
+
+        </div>
+
+    </div>
+
+    <div id="lineTimeIndicator" class="indicator" style="position: fixed;width: 1px; top: 0px; bottom: 0px; z-index:15; background: #000;">
+        <div style="position: absolute; top: 0px; bottom: 0px; width: 1px; pointer-events: none; stroke: black; ">
+
+        </div>
+    </div>
+
+    <div id="lineTimeIndicatorText" class="indicator" style="position: absolute;">
+
+
+        <div id="extraInfo" style="z-index:100;position:absolute;top: 7;left: -110;border-style:solid;width: 150;background-color: rgba(255,255,255,0.75);">
+
+            <p id="infoTextA" class="infoText" align="right" style="margin:auto"></p>
+            <p id="infoTextB" class="infoText" align="right" style="color:blue;margin:auto"></p>
+            <p id="timeText" align="center" style="z-index:100;font-size: 14pt;margin:auto"></p>
+            <div id="zoomImage" style="position:absolute;left:0;bottom:0;z-index:100;font-size: 14pt;margin: auto;align: center;"></div>
+            <!--            <img style="position: relative;width:170px;height:100px;opacity: 0.75" src="Icons/balloon3.png" alt="ERROR">-->
+
+        </div>
+    </div>
+
+    <div id="loadScreen" class="hidden">
+        <div id="floatingCirclesG" >
+            <img src="images/InternetSlowdown_Day.gif" >
+            <!--
+	<div class="f_circleG" id="frotateG_05551"></div>
+	<div class="f_circleG" id="frotateG_02"></div>
+	<div class="f_circleG" id="frotateG_03"></div>
+	<div class="f_circleG" id="frotateG_04"></div>
+	<div class="f_circleG" id="frotateG_05"></div>
+	<div class="f_circleG" id="frotateG_06"></div>
+	<div class="f_circleG" id="frotateG_07"></div>
+	<div class="f_circleG" id="frotateG_08"></div>
+-->
+
+
+        </div>
+    </div>
+    <div style=h eight:25%;></div>
+    <div id="chart">
+
+
+
+    </div>
+    <div style=h eight:20%;></div>
+
+
+
+    <!--<div id="downBuffer" style="height:20%"></div>-->
+</body>

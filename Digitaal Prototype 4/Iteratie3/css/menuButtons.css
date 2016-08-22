@@ -1,0 +1,192 @@
+.hidden{
+    width:0px;
+    height:0px;
+    visibility: hidden;
+}
+
+.full-view{
+    width:100%;
+
+}
+
+
+
+
+
+.menuElement:active{
+    background:blueviolet;
+}
+
+
+.selectorsContainer{
+    position:absolute;
+    font: 8pt Arial, Helvetica, sans-serif;
+    top:45px;
+    border-style: solid;
+    width:100%;
+    background:#FFFFFF;
+    z-index:100000;
+    overflow: visible;
+}
+
+
+.activitySelector{
+    border-width:4;
+    border-style: solid;
+   
+}
+
+.activitySelector.notSelected{
+    opacity:1;
+    color:lightgray;
+   
+}
+
+
+
+.activitySelector.notSelected img{
+    opacity:0.3;
+   
+}
+
+
+
+
+
+
+.focusSelector{
+    border-width:2;
+    border-style: solid;
+    float:left;
+    font-style:normal;
+    cursor:pointer;
+   
+}
+.focusSelector:active{
+    background-color: beige;
+}
+
+
+.activitySelector img{
+    height:20px;
+}
+
+
+.selectorContainer{
+    padding:1;
+    border-width:2;
+    border-style: solid;
+    float:left;
+    width:100%
+}
+
+#focusSelectors .selectorContainer{
+    padding:1;
+    border-width:2;
+    border-style: solid;
+    float:left;
+    width:32%
+}
+
+#menu{
+
+
+    width:100%;
+    height:50px;
+    font: 9pt Arial, Helvetica, sans-serif;
+    background:#FFFFFF;
+
+
+}
+
+button{
+    
+    cursor:pointer;
+    height:100%;
+}
+
+
+
+
+.menuElement{
+    float:right;
+
+
+}
+#slider{
+    position:relative;
+    width:100%;
+    z-index:10000;
+}
+
+#controllerContainer{
+    float:left;
+    position:relative;
+    width:40%;
+    height:100%;
+    border-width: 1;
+    border-color:grey;
+}
+
+#controller{
+    float:left;
+    position:fixed;
+    width:40%;
+    height:100%;
+    border-right-style:solid;
+    border-right-width:2;
+    border-right-color: black;
+    
+}
+
+.brush .extent {
+    stroke: #fff;
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+}
+
+
+#detailsContainer{
+    /*bottom:0; */
+}
+
+.controllerChild{
+    position:relative;
+}
+/*TODO*/
+.controllerChild p{
+    margin-top:0;
+    margin-bottom:0;
+}
+
+.inspectingText{
+    height:12px;
+}
+
+#parcoordsContainer{
+    height:125px;
+    width:100%;
+   
+    position:absolute;
+}
+
+#dayData{
+    width:100%;
+    height:125px;
+}
+
+#dayData div{
+    width:100%;
+    height:100px;
+}
+
+.dayData{
+    
+    width:100%;
+    height:125px;
+}
+
+.dayData div{
+    width:100%;
+    height:100px;
+}

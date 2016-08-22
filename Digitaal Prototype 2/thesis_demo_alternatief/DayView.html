@@ -1,0 +1,91 @@
+<meta charset="utf-8">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/thesis_demo.css">
+    <link rel="stylesheet" type="text/css" href="css/gantt.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/menuButtons.css">
+
+    <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+
+<script src="js/libs/moment/moment.js"></script>
+<script src="js/libs/d3/d3.js"></script>
+<script src="js/config.js"></script>
+<script src="js/collection_metrics.js"></script>
+<script src="js/libs/d3/gantt-chart-d3v2.js"></script>
+<script src="js/gantt.js"></script>
+<script src="js/parallel_coordinates.js"></script>
+<script src="js/contextGeneration.js"></script>
+<script src="js/libs/utils.js"></script>
+<script src="js/preprocessing.js"></script>
+<script src="js/main.js"></script>
+<script src="js/menu.js"></script>
+
+
+
+<!--http://cssmenumaker.com/menu/css3-drop-down-menu-->
+<div id='menu' style = "position:fixed; z-index:10">
+
+        <!--<li><a href='#'><span>Change view</span></a></li>-->
+        <!--<li class='active has-sub'><a href='#'><span>Features</span></a>-->
+            <!--<ul>-->
+                <!--<li class='has-sub'><a href='#'><span>Product 1</span></a>-->
+                    <!--<ul>-->
+                        <!--<li><a href='#'><span>Sub Product</span></a></li>-->
+                        <!--<li class='last'><a href='#'><span>Sub Product</span></a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li class='has-sub'><a href='#'><span>Product 2</span></a>-->
+                    <!--<ul>-->
+                        <!--<li><a href='#'><span>Sub Product</span></a></li>-->
+                        <!--<li class='last'><a href='#'><span>Sub Product</span></a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <div id="subjectiveChartsButton" class="menuElement button"><span>Toggle subjective charts</span></div>
+        <div id="subjectiveTimeLineButton" class="menuElement button"><span>Toggle subjective time line</span></div>
+        <div id="objectiveDataButton" class="menuElement button"><span>Toggle objective data</span></div>
+        <div id="standingDataButton" class="menuElement button"><span>Toggle standing data</span></div>
+    <!--<div id="movingDataButton" class="menuElement button"><span>Toggle movement data</span></div>-->
+
+    <div id="selectorsContainer" class="menuElement"></div>
+</div>
+
+<div id="topBuffer" style="height:50px"></div>
+
+
+<div id="floatingTooltip" class="hidden detailsCell">
+    <div class="floatingValue"><p class="floatingValueText"></p><p class="floatingFeatureText"></p><p class="floatingTimeText"></p><svg  width="50" height="10" ><rect class="floatingMovement" width="50" height="10"></rect></svg><p class="floatingMovementText"></p></div>
+    <div class="detailsCell vertical"></div>
+</div>
+
+<div id="floatingSubjectiveTooltip" class="hidden detailsCell">
+
+</div>
+
+<div id="floatingDiary" class="hidden detailsCell">
+    <div  class = "diaryBackground"></div>
+<div id="hideDiaryButton"  >HIDE</div>
+
+</div>
+
+
+<div id="chart">
+    <div class="detailsCellContainer">
+
+        <div id="slider"></div>
+        <div class="detailsCell vertical"></div>
+        <div id="tooltip">
+            <div id="value"><p id="valueText"></p><p id="featureText"></p><p id="timeText"></p></div>
+            <div id="diaryContainer"></div>
+        </div>
+        <div class="detailsCell horizontal"></div>
+
+    </div>
+
+</div>
+<!--<div id="downBuffer" style="height:20%"></div>-->
+
+</body>

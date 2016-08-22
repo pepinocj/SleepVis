@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body width="100">
+<script src="js/libs/d3/d3.js"></script>
+<svg width="1000px" height="100px"></svg>
+
+<script type="text/javascript">
+    var xTimeScale = d3.time.scale().range([ 0, 1000 ]).clamp(true).domain([new Date("01-Jul-2015 16:00:00"),new Date("02-Jul-2015 16:00:00")]);
+
+
+    var xAxis = d3.svg.axis().tickFormat(d3.time.format("%H:%M")).ticks(16)
+            .scale(xTimeScale);
+    d3.select("body").selectAll(".axis")
+            .data(["top", "bottom"])
+            .enter().append("svg")
+            .attr("class", function(d) { return d + " axis"; })
+            .each(function(d) { d3.select(this).call(xAxis.ticks(12).orient(d)); });
+
+</script>
+</body>
+</html>

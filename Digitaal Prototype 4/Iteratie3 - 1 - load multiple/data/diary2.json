@@ -1,0 +1,369 @@
+{
+    "diaryEntries": [ {
+        "date": "2016-04-10 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "opstaan, niet moe, muesli eten, gaan fietsen",
+                "MIDDAG": "lichte eten",
+                "NAMIDDAG": "Parijs-Roubaix kijken",
+                "AVOND": "PC",
+                "LAATSTE_UUR": "bad en podcast",
+                "NET_VOOR_HET_SLAPENGAAN": "sleep diary"
+            },
+            "sleep_times": [{
+                "duration": 15,
+                "start": "1970-01-01 07:06:00",
+                "label": "EMA"
+            }, {
+                "duration": 25,
+                "start": "1970-01-01 23:21:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-09 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "vermoeid, gaan trainen",
+                "MIDDAG": "niet meer vermoeid",
+                "NAMIDDAG": "veel geluierd",
+                "AVOND": "frieten gegeten",
+                "LAATSTE_UUR": "podcast",
+                "NET_VOOR_HET_SLAPENGAAN": "sleep diary"
+            },
+            "sleep_times": [{
+                "duration": 10,
+                "start": "1970-01-01 07:00:00",
+                "label": "EMA"
+            }, {
+                "duration": 25,
+                "start": "1970-01-01 00:00:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-08 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "Klein beetje moe",
+                "MIDDAG": "fietsen en eten, veel energie",
+                "NAMIDDAG": "film, pc",
+                "AVOND": "PC",
+                "LAATSTE_UUR": "podcast",
+                "NET_VOOR_HET_SLAPENGAAN": "Sleep diary"
+            },
+            "sleep_times": [{
+                "duration": 20,
+                "start": "1970-01-01 05:00:00",
+                "label": "WAKE"
+            }, {
+                "duration": 20,
+                "start": "1970-01-01 06:00:00",
+                "label": "WAKE"
+            }, {
+                "duration": 10,
+                "start": "1970-01-01 08:00:00",
+                "label": "WAKE"
+            }, {
+                "duration": 15,
+                "start": "1970-01-01 08:30:00",
+                "label": "EMA"
+            }, {
+                "duration": 40,
+                "start": "1970-01-01 00:00:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-07 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "uitgerust, 1 boterham als ontbijt, krant lezen",
+                "MIDDAG": "geen honger, nog steeds veel energie, even fietsen",
+                "NAMIDDAG": "iPad, PlayStation",
+                "AVOND": "training, interval",
+                "LAATSTE_UUR": "PC en podcast",
+                "NET_VOOR_HET_SLAPENGAAN": "Sleep dairy invullen"
+            },
+            "sleep_times": [{
+                "duration": 10,
+                "start": "1970-01-01 07:34:00",
+                "label": "EMA"
+            }, {
+                "duration": 5,
+                "start": "1970-01-01 00:00:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-06 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "goed uitgerust, rustig ontbeten en de krant gelezen",
+                "MIDDAG": "passief, muesli met fruit als eten",
+                "NAMIDDAG": "passief, film",
+                "AVOND": "TV en pc",
+                "LAATSTE_UUR": "podcast",
+                "NET_VOOR_HET_SLAPENGAAN": "Sleep diary invullen"
+            },
+            "sleep_times": [{
+                "duration": 5,
+                "start": "1970-01-01 08:10:00",
+                "label": "EMA"
+            }, {
+                "duration": 5,
+                "start": "1970-01-01 00:00:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-05 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "nog wat moe, meteen uit bed ",
+                "MIDDAG": "krant gelezen, PC, gegeten, niet moe",
+                "NAMIDDAG": "weer passief, uitgerust gevoel",
+                "AVOND": "rustige training en lichte maaltijd",
+                "LAATSTE_UUR": "lichte buikpijn ",
+                "NET_VOOR_HET_SLAPENGAAN": "Sleep diary invullen"
+            },
+            "sleep_times": [{
+                "duration": 10,
+                "start": "1970-01-01 03:15:00",
+                "label": "WAKE"
+            }, {
+                "duration": "",
+                "start": "",
+                "label": "EMA"
+            }, {
+                "duration": "",
+                "start": "",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-04 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "",
+                "MIDDAG": "lichte maaltijd",
+                "NAMIDDAG": "passief",
+                "AVOND": "TV kijken, computer",
+                "LAATSTE_UUR": "PC, podcast luisteren",
+                "NET_VOOR_HET_SLAPENGAAN": "sleep diary invullen"
+            },
+            "sleep_times": [{
+                "duration": 60,
+                "start": "1970-01-01 06:00:00",
+                "label": "WAKE"
+            }, {
+                "duration": 5,
+                "start": "1970-01-01 09:00:00",
+                "label": "EMA"
+            }, {
+                "duration": 35,
+                "start": "1970-01-01 22:00:00",
+                "label": "SOL"
+            }]
+        }
+    }],
+    "events": [{
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-10 22:27:00",
+        "label": "LIGHT_OFF"
+    }, {
+        "duration": 50,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-10 19:40:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 30,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-10 18:00:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 240,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-10 13:00:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 160,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-10 09:15:00",
+        "label": "SPORT"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-09 22:24:00",
+        "label": "LIGHT_OFF"
+    }, {
+        "duration": 15,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-09 18:45:00",
+        "label": "HEAVY_MEAL"
+    }, {
+        "duration": 120,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-09 09:45:00",
+        "label": "SPORT"
+    }, {
+        "duration": 120,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-09 08:05:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-08 23:38:00",
+        "label": "LIGHT_OFF"
+    }, {
+        "duration": 40,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-08 21:41:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 40,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-08 20:25:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 100,
+        "hasDuration": true,
+        "notes": "film\n",
+        "start": "2016-04-08 13:59:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-07 23:30:00",
+        "label": "LIGHT_OFF"
+    }, {
+        "duration": 50,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-07 22:35:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 90,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-07 19:42:00",
+        "label": "SPORT"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-07 15:19:00",
+        "label": "COFFEE"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-06 23:13:00",
+        "label": "LIGHT_OFF"
+    }, {
+        "duration": 70,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-06 21:50:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-06 18:43:00",
+        "label": "COFFEE"
+    }, {
+        "duration": 150,
+        "hasDuration": true,
+        "notes": "koers en film\n",
+        "start": "2016-04-06 17:23:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 5,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-05 23:30:00",
+        "label": "TOILET"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-05 23:15:00",
+        "label": "LIGHT_OFF"
+    }, {
+        "duration": 45,
+        "hasDuration": true,
+        "notes": "podcast",
+        "start": "2016-04-05 23:15:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 90,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-05 19:30:00",
+        "label": "SPORT"
+    }, {
+        "duration": 20,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-05 18:51:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-05 15:11:00",
+        "label": "COFFEE"
+    }, {
+        "duration": 60,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-05 14:10:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-04 22:27:00",
+        "label": "LIGHT_OFF"
+    }, {
+        "duration": 60,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-04 20:40:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 55,
+        "hasDuration": true,
+        "notes": "\n",
+        "start": "2016-04-04 19:06:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 22,
+        "hasDuration": true,
+        "notes": "\n\n",
+        "start": "2016-04-04 17:04:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "Middagkopje",
+        "start": "2016-04-04 12:40:00",
+        "label": "COFFEE"
+    }]
+}

@@ -1,0 +1,73 @@
+.axis {
+    font: 10px sans-serif;
+    position: fixed;
+    pointer-events: none;
+    z-index: 2;
+    overflow:visible;
+
+
+
+}
+
+.axis text {
+    -webkit-transition: fill-opacity 250ms linear;
+}
+
+.axis path {
+    display: none;
+
+}
+
+.axis line,
+.axis path {
+    fill: none;
+    stroke: rgba(175, 175, 175, 0.2);
+    stroke-dasharray: 5,5;
+    shape-rendering: crispEdges;
+}
+
+.chartAxis line{
+
+}
+
+.tick text{
+    opacity:5;
+}
+
+.axis text {
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+    cursor: move;
+}
+
+.axis line {
+
+    shape-rendering: crispEdges;
+}
+
+.axis.top {
+    background-image: linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+    background-image: -o-linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+    background-image: -moz-linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+    background-image: -webkit-linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+    background-image: -ms-linear-gradient(top, #fff 0%, rgba(255,255,255,0) 100%);
+    top: 0px;
+    padding: 0 0 24px 0;
+}
+
+.axis.bottom {
+    background-image: linear-gradient(bottom, #fff 0%, rgba(255,255,255,0) 100%);
+    background-image: -o-linear-gradient(bottom, #fff 0%, rgba(255,255,255,0) 100%);
+    background-image: -moz-linear-gradient(bottom, #fff 0%, rgba(255,255,255,0) 100%);
+    background-image: -webkit-linear-gradient(bottom, #fff 0%, rgba(255,255,255,0) 100%);
+    background-image: -ms-linear-gradient(bottom, #fff 0%, rgba(255,255,255,0) 100%);
+    bottom: 0px;
+    padding: 24px 0 0 0;
+}
+
+.longFadedTick{
+    opacity:0.1;
+    stroke: #000;
+    background:#000;
+
+
+}

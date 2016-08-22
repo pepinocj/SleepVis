@@ -1,0 +1,76 @@
+<meta charset="utf-8">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/thesis_demo.css">
+    <link rel="stylesheet" type="text/css" href="css/gantt.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/menuButtons.css">
+
+    <script src="js/libs/jquery/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+
+<script src="js/libs/moment/moment.js"></script>
+<script src="js/libs/d3/d3.js"></script>
+<script src="js/libs/cubism/cubism.v1.js"></script>
+<script src="js/config.js"></script>
+<script src="js/collection_metrics.js"></script>
+<script src="js/libs/d3/gantt-chart-d3v2.js"></script>
+<script src="js/gantt.js"></script>
+<script src="js/parallel_coordinates.js"></script>
+<script src="js/contextGeneration.js"></script>
+<script src="js/libs/utils.js"></script>
+<script src="js/preprocessing.js"></script>
+<script src="js/sensorMain.js"></script>
+<script src="js/menu.js"></script>
+
+
+
+<!--http://cssmenumaker.com/menu/css3-drop-down-menu-->
+<div id='menu' style = "position:fixed; z-index:10">
+
+    <!--<li><a href='#'><span>Change view</span></a></li>-->
+    <!--<li class='active has-sub'><a href='#'><span>Features</span></a>-->
+    <!--<ul>-->
+    <!--<li class='has-sub'><a href='#'><span>Product 1</span></a>-->
+    <!--<ul>-->
+    <!--<li><a href='#'><span>Sub Product</span></a></li>-->
+    <!--<li class='last'><a href='#'><span>Sub Product</span></a></li>-->
+    <!--</ul>-->
+    <!--</li>-->
+    <!--<li class='has-sub'><a href='#'><span>Product 2</span></a>-->
+    <!--<ul>-->
+    <!--<li><a href='#'><span>Sub Product</span></a></li>-->
+    <!--<li class='last'><a href='#'><span>Sub Product</span></a></li>-->
+    <!--</ul>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</li>-->
+    <div id="subjectiveChartsButton" class="menuElement button"><span>Toggle subjective charts</span></div>
+    <div id="subjectiveTimeLineButton" class="menuElement button"><span>Toggle subjective time line</span></div>
+    <div id="objectiveDataButton" class="menuElement button"><span>Toggle objective data</span></div>
+    <div id="standingDataButton" class="menuElement button"><span>Toggle standing data</span></div>
+    <!--<div id="movingDataButton" class="menuElement button"><span>Toggle movement data</span></div>-->
+
+    <div id="selectorsContainer" class="menuElement"></div>
+</div>
+
+<div id="topBuffer" style="height:50px"></div>
+
+
+<div id="floatingTooltip" class="hidden detailsCell">
+    <div id="floatingValue"><p id="floatingValueText"></p><p id="floatingFeatureText"></p><p id="floatingTimeText"></p><svg  width="50" height="10" ><rect id="floatingMovement" width="50" height="10"></rect></svg><p id="floatingMovementText"></p></div>
+    <div class="detailsCell vertical"></div>
+</div>
+
+
+<div class="sensorPart" >
+    <div  id="cubchart"></div>
+    <div  id="focusedFeature"></div>
+
+</div>
+<div class="sensorPart" id="smallMultiples"></div>
+
+<!--<div id="downBuffer" style="height:20%"></div>-->
+
+</body>

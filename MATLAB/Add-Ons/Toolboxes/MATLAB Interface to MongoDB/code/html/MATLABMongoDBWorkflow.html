@@ -1,0 +1,294 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>MATLAB Interface to MongoDB Workflow</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-08-26"><meta name="DC.source" content="MATLABMongoDBWorkflow.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>MATLAB Interface to MongoDB Workflow</h1><!--introduction--><p>This script shows how to connect to and execute query on a Mongo database from MATLAB. This script assumes it is connecting to a Mongo server version 3.0 This script works on MATLAB R2014b and later.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Mongo-JAVA Driver Installation</a></li><li><a href="#4">Add Mongo-JAVA driver to class path</a></li><li><a href="#5">Connect to a Mongo Database</a></li><li><a href="#6">Execute FIND query on a Mongo Collection 'product'</a></li><li><a href="#8">Execute COUNT query on a Mongo Collection 'product'</a></li><li><a href="#9">Get meta-data information about the database</a></li><li><a href="#10">Get meta-data information about collection 'product'</a></li><li><a href="#11">Check if a collection by the name 'inventory' exists in the database</a></li><li><a href="#12">Close database connection</a></li><li><a href="#13">Verify if connection is closed</a></li></ul></div><h2>Mongo-JAVA Driver Installation<a name="1"></a></h2><p>Before running this script it is necessary to install one of the following Mongo-JAVA driver version:</p><div><ul><li>mongo-java-driver-3.0.0.jar</li><li>mongo-java-driver-3.0.0-rc0.jar</li><li>mongo-java-driver-3.0.0-rc1.jar</li><li>mongo-java-driver-3.0.0-beta1.jar</li><li>mongo-java-driver-3.0.0-beta2.jar</li><li>mongo-java-driver-3.0.0-beta3.jar</li></ul></div><pre>Driver can be installed from following link: http://central.maven.org/maven2/org/mongodb/mongo-java-driver/</pre><h2>Add Mongo-JAVA driver to class path<a name="4"></a></h2><pre class="codeinput">javaaddpath
+<span class="string">'&lt;install_root&gt;\mongo-java-driver-3.0.0-rc0.jar'</span>;
+</pre><h2>Connect to a Mongo Database<a name="5"></a></h2><pre class="codeinput">server = <span class="string">'ServerName'</span>;
+port = 27017;
+database = <span class="string">'DatabaseName'</span>;
+username = <span class="string">'DatabaseUser'</span>;
+password = <span class="string">'Password'</span>;
+
+mongodbconn = mongodatabase(server, port, database, <span class="string">'UserName'</span>, username, <span class="string">'Password'</span>, password) <span class="comment">%#ok&lt;*NOPTS&gt;</span>
+
+mongodbconn =
+
+  mongodatabase <span class="string">with</span> <span class="string">properties:</span>
+
+    Database: <span class="string">'DatabaseName'</span>
+    UserName: <span class="string">'DatabaseUser'</span>
+     Message: <span class="string">''</span>
+        Type: <span class="string">'Mongo Database Object'</span>
+</pre><h2>Execute FIND query on a Mongo Collection 'product'<a name="6"></a></h2><pre class="codeinput">query = <span class="string">'{"artist": "David Guetta"}'</span>;
+documents = find(mongodbconn, <span class="string">'product'</span>, <span class="string">'Query'</span>, query, <span class="string">'limit'</span>, 3)
+</pre><pre class="codeinput">documents =
+
+    {3x2 cell}
+    {3x2 cell}
+    {3x2 cell}
+
+documents{1} =
+
+    <span class="string">'_id'</span>       [1x1 org.bson.types.ObjectId]
+    <span class="string">'artist'</span>    <span class="string">'David Guetta'</span>
+    <span class="string">'title'</span>     <span class="string">'Dangerous'</span>
+</pre><h2>Execute COUNT query on a Mongo Collection 'product'<a name="8"></a></h2><pre class="codeinput">query = <span class="string">'{"artist":"David Guetta"}'</span>;
+result_size = count(mongodbconn, <span class="string">'product'</span>, query)
+
+result_size =
+
+          5.00
+</pre><h2>Get meta-data information about the database<a name="9"></a></h2><pre class="codeinput">dbinfo = get(mongodbconn)
+
+dbinfo =
+
+             Server: {<span class="string">'DatabaseServer'</span>}
+               Port: {[27017.00]}
+           Database: <span class="string">'DatabaseName'</span>
+           UserName: <span class="string">'DatabaseUser'</span>
+            Message: []
+               Type: <span class="string">'Mongo Database Object'</span>
+     ReadPreference: <span class="string">'primary'</span>
+       WriteConcern: <span class="string">'WriteConcern{w=1, wtimeout=0, fsync=false, j=false'</span>
+        Collections: 10.00
+    CollectionNames: {9x1 cell}
+          Documents: 7592823.00
+</pre><h2>Get meta-data information about collection 'product'<a name="10"></a></h2><pre class="codeinput">collectinfo = collectioninfo(mongodbconn, <span class="string">'product'</span>)
+
+collectinfo =
+
+    CollectionName: <span class="string">'product'</span>
+      DatabaseName: <span class="string">'DatabaseName'</span>
+          FullName: <span class="string">'DatabaseName.product'</span>
+    ReadPreference: <span class="string">'primary'</span>
+      WriteConcern: <span class="string">'WriteConcern{w=1, wtimeout=0, fsync=false, j=false'</span>
+         Documents: 11.00
+    CollectionSize: 1232.00
+       StorageSize: 8192.00
+            Capped: 0
+           Indexes: 1.00
+    TotalIndexSize: 8176.00
+</pre><h2>Check if a collection by the name 'inventory' exists in the database<a name="11"></a></h2><pre class="codeinput">col_exists = collectionexists(mongodbconn, <span class="string">'inventory'</span>) <span class="comment">%#ok&lt;*NASGU&gt;</span>
+
+col_exists =
+
+     0
+</pre><h2>Close database connection<a name="12"></a></h2><pre class="codeinput">close(mongodbconn);
+mongodbconn
+
+mongodbconn =
+
+  mongodatabase <span class="string">with</span> <span class="string">properties:</span>
+
+    Database: <span class="string">'DatabaseName'</span>
+    UserName: <span class="string">'DatabaseUser'</span>
+     Message: <span class="string">'Database connection is closed'</span>
+        Type: <span class="string">'Mongo Database Object'</span>
+</pre><h2>Verify if connection is closed<a name="13"></a></h2><pre class="codeinput">status = isopen(mongodbconn)
+
+status =
+
+             0
+</pre><p class="footer">Copyright 2015 The MathWorks, Inc.<br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% MATLAB Interface to MongoDB Workflow
+% This script shows how to connect to and execute query on a Mongo database from MATLAB.
+% This script assumes it is connecting to a Mongo server version 3.0
+% This script works on MATLAB R2014b and later.
+
+% Copyright 2015 The MathWorks, Inc.
+
+%% Mongo-JAVA Driver Installation
+% Before running this script it is necessary to install one of 
+% the following Mongo-JAVA driver version: 
+%%
+% * mongo-java-driver-3.0.0.jar
+% * mongo-java-driver-3.0.0-rc0.jar
+% * mongo-java-driver-3.0.0-rc1.jar
+% * mongo-java-driver-3.0.0-beta1.jar
+% * mongo-java-driver-3.0.0-beta2.jar
+% * mongo-java-driver-3.0.0-beta3.jar
+%%
+%  Driver can be installed from following link: http://central.maven.org/maven2/org/mongodb/mongo-java-driver/
+
+%% Add Mongo-JAVA driver to class path
+javaaddpath
+'<install_root>\mongo-java-driver-3.0.0-rc0.jar';
+
+%% Connect to a Mongo Database
+server = 'ServerName';
+port = 27017;
+database = 'DatabaseName';
+username = 'DatabaseUser';
+password = 'Password';
+
+mongodbconn = mongodatabase(server, port, database, 'UserName', username, 'Password', password) %#ok<*NOPTS>
+        
+mongodbconn = 
+
+  mongodatabase with properties:
+
+    Database: 'DatabaseName'
+    UserName: 'DatabaseUser'
+     Message: ''
+        Type: 'Mongo Database Object'
+        
+%% Execute FIND query on a Mongo Collection 'product'
+query = '{"artist": "David Guetta"}';
+documents = find(mongodbconn, 'product', 'Query', query, 'limit', 3)
+
+documents = 
+
+    {3x2 cell}
+    {3x2 cell}
+    {3x2 cell}
+    
+documents{1} = 
+
+    '_id'       [1x1 org.bson.types.ObjectId]
+    'artist'    'David Guetta'               
+    'title'     'Dangerous'
+ 
+
+%% Execute COUNT query on a Mongo Collection 'product'
+
+query = '{"artist":"David Guetta"}';
+result_size = count(mongodbconn, 'product', query)
+
+result_size =
+
+          5.00
+     
+%% Get meta-data information about the database
+
+dbinfo = get(mongodbconn)
+
+dbinfo = 
+
+             Server: {'DatabaseServer'}
+               Port: {[27017.00]}
+           Database: 'DatabaseName'
+           UserName: 'DatabaseUser'
+            Message: []
+               Type: 'Mongo Database Object'
+     ReadPreference: 'primary'
+       WriteConcern: 'WriteConcern{w=1, wtimeout=0, fsync=false, j=false'
+        Collections: 10.00
+    CollectionNames: {9x1 cell}
+          Documents: 7592823.00
+          
+%% Get meta-data information about collection 'product'
+
+collectinfo = collectioninfo(mongodbconn, 'product')
+    
+collectinfo = 
+
+    CollectionName: 'product'
+      DatabaseName: 'DatabaseName'
+          FullName: 'DatabaseName.product'
+    ReadPreference: 'primary'
+      WriteConcern: 'WriteConcern{w=1, wtimeout=0, fsync=false, j=false'
+         Documents: 11.00
+    CollectionSize: 1232.00
+       StorageSize: 8192.00
+            Capped: 0
+           Indexes: 1.00
+    TotalIndexSize: 8176.00
+    
+%% Check if a collection by the name 'inventory' exists in the database
+
+col_exists = collectionexists(mongodbconn, 'inventory') %#ok<*NASGU>
+     
+col_exists =
+
+     0
+     
+%% Close database connection
+
+close(mongodbconn);
+mongodbconn
+   
+mongodbconn = 
+
+  mongodatabase with properties:
+
+    Database: 'DatabaseName'
+    UserName: 'DatabaseUser'
+     Message: 'Database connection is closed'
+        Type: 'Mongo Database Object'
+        
+%% Verify if connection is closed
+
+status = isopen(mongodbconn)
+
+status =
+
+             0
+             
+##### SOURCE END #####
+--></body></html>

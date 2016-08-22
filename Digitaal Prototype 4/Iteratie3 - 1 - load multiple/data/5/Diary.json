@@ -1,0 +1,248 @@
+{
+    "diaryEntries": [{
+        "date": "2016-04-20 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "vroeg wakker",
+                "MIDDAG": "les",
+                "NAMIDDAG": "les",
+                "AVOND": "eten met vriendim en wandelen",
+                "LAATSTE_UUR": "",
+                "NET_VOOR_HET_SLAPENGAAN": ""
+            },
+            "sleep_times": [{
+                "duration": "",
+                "start": "",
+                "label": "EMA"
+            }, {
+                "duration": "",
+                "start": "",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-19 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "les gehad",
+                "MIDDAG": "buiten gewandeld",
+                "NAMIDDAG": "voor school gewerkt",
+                "AVOND": "gaan eten met vrienden",
+                "LAATSTE_UUR": "smartphone gezeten",
+                "NET_VOOR_HET_SLAPENGAAN": "smartphone"
+            },
+            "sleep_times": [{
+                "duration": 10,
+                "start": "1970-01-01 06:45:00",
+                "label": "EMA"
+            }, {
+                "duration": 15,
+                "start": "1970-01-01 23:00:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-18 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "les gevolgd",
+                "MIDDAG": "les gevolgd",
+                "NAMIDDAG": "les gevolgd",
+                "AVOND": "gekookt, gegeten en geleerd voor school ",
+                "LAATSTE_UUR": "serie op laptop gekeken",
+                "NET_VOOR_HET_SLAPENGAAN": "gelezen"
+            },
+            "sleep_times": [{
+                "duration": 15,
+                "start": "1970-01-01 08:00:00",
+                "label": "EMA"
+            }, {
+                "duration": 20,
+                "start": "1970-01-01 23:30:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-17 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "leren",
+                "MIDDAG": "OMA bezoeken",
+                "NAMIDDAG": "OMA bezoeken en Erna leren",
+                "AVOND": "TV kijken en trein nemen naar Leuven",
+                "LAATSTE_UUR": "TV",
+                "NET_VOOR_HET_SLAPENGAAN": "TV"
+            },
+            "sleep_times": [{
+                "duration": "",
+                "start": "",
+                "label": "EMA"
+            }, {
+                "duration": "",
+                "start": "",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-16 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "laat opgestaan",
+                "MIDDAG": "op bezoek gegaan",
+                "NAMIDDAG": "gaan winkelen",
+                "AVOND": "tv gekeken",
+                "LAATSTE_UUR": "tv",
+                "NET_VOOR_HET_SLAPENGAAN": "tv"
+            },
+            "sleep_times": [{
+                "duration": 10,
+                "start": "1970-01-01 07:45:00",
+                "label": "WAKE"
+            }, {
+                "duration": 35,
+                "start": "1970-01-01 08:00:00",
+                "label": "EMA"
+            }, {
+                "duration": 45,
+                "start": "1970-01-01 23:15:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-15 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "leren",
+                "MIDDAG": "leren",
+                "NAMIDDAG": "testen afleggen voor thesis",
+                "AVOND": "TV kijken",
+                "LAATSTE_UUR": "TV kijken",
+                "NET_VOOR_HET_SLAPENGAAN": "TV"
+            },
+            "sleep_times": [{
+                "duration": 60,
+                "start": "1970-01-01 09:00:00",
+                "label": "EMA"
+            }, {
+                "duration": 60,
+                "start": "1970-01-01 23:00:00",
+                "label": "SOL"
+            }]
+        }
+    }],
+    "events": [{
+        "duration": 30,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-19 21:01:00",
+        "label": "SMARTPHONE"
+    }, {
+        "duration": 15,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-18 23:38:00",
+        "label": "READING"
+    }, {
+        "duration": 45,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-18 23:00:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "thee",
+        "start": "2016-04-18 22:35:00",
+        "label": "OTHER"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "thee",
+        "start": "2016-04-17 22:51:00",
+        "label": "OTHER"
+    }, {
+        "duration": 60,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-17 22:00:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 20,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-17 21:30:00",
+        "label": "WALKING"
+    }, {
+        "duration": 180,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-16 20:30:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-15 22:30:00",
+        "label": "ALCOHOL"
+    }, {
+        "duration": 30,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-15 22:30:00",
+        "label": "SMARTPHONE"
+    }, {
+        "duration": 180,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-15 20:29:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 15,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-13 23:08:00",
+        "label": "SMARTPHONE"
+    }, {
+        "duration": 120,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-13 21:00:00",
+        "label": "READING"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "koekje",
+        "start": "2016-04-13 20:00:00",
+        "label": "OTHER"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "thee",
+        "start": "2016-04-13 19:30:00",
+        "label": "OTHER"
+    }, {
+        "duration": 240,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-13 19:00:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 30,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-12 23:14:00",
+        "label": "SMARTPHONE"
+    }, {
+        "duration": 180,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-12 22:00:00",
+        "label": "READING"
+    }, {
+        "duration": 180,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-12 20:00:00",
+        "label": "LAPTOP"
+    }]
+}

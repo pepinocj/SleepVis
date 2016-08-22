@@ -1,0 +1,837 @@
+<meta charset="utf-8">
+<head>
+<style>
+    /* disable text selection */
+    svg *::selection {
+        background : transparent;
+    }
+
+    svg *::-moz-selection {
+        background:transparent;
+    }
+
+    svg *::-webkit-selection {
+        background:transparent;
+    }
+    rect.selection {
+        stroke          : #333;
+        stroke-dasharray: 4px;
+        stroke-opacity  : 0.5;
+        fill            : transparent;
+    }
+
+    rect.cell-border {
+        stroke: #eee;
+        stroke-width:0.3px;
+    }
+
+    rect.cell-selected {
+        stroke: rgb(51,102,153);
+        stroke-width:0.5px;
+    }
+
+    rect.cell-hover {
+        stroke: #F00;
+        stroke-width:0.3px;
+    }
+
+    text.mono {
+        font-size: 9pt;
+        font-family: Consolas, courier;
+        fill: #aaa;
+    }
+
+    text.text-selected {
+        fill: #000;
+    }
+
+    text.text-highlight {
+        fill: #c00;
+    }
+    text.text-hover {
+        fill: #00C;
+    }
+    #tooltip {
+        position: absolute;
+        width: 200px;
+        height: auto;
+        padding: 10px;
+        background-color: white;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+    }
+
+    #tooltip.hidden {
+        display: none;
+    }
+
+    #tooltip p {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .container{
+        width:33%;
+        overflow:hidden;
+        float:left;
+    }
+
+    canvas{
+        width:100%;
+        height:4.5%;
+    }
+
+    /*.featureHM{*/
+        /*height:4%;*/
+    /*}*/
+
+
+
+    /*.horizon .title {*/
+        /*bottom: 90px;*/
+        /*margin: 0px 6px;*/
+        /*float:left;*/
+    /*}*/
+
+    /*canvas{*/
+        /*float:right;*/
+    /*}*/
+
+    /*.rule{*/
+        /*float:right;*/
+    /*}*/
+
+    /*.bottom.axis{*/
+        /*float:right;*/
+    /*}*/
+
+    /*.top.axis{*/
+        /*float:right;*/
+
+    /*}*/
+
+    #marker {
+        position: absolute;
+
+        margin-top:27px;
+        pointer-events: none;
+    }
+
+    #marker.hidden {
+        display: none;
+    }
+
+    #marker p {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .featureTooltip{
+        margin-bottom:11.7px;
+    }
+
+    #cubismDetails{
+
+        width:100%;
+        height:200px;
+        position:fixed;
+        background: #fff;
+        bottom:-15;
+    }
+
+    .horizon.detail canvas{
+        height:10%;
+    }
+
+    body{
+       height:636px;
+    }
+
+
+
+</style>
+    <link rel="stylesheet" type="text/css" href="css/thesis_demo.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<div id="tooltip" class="hidden">
+    <p><span id="value"></p>
+</div>
+
+<script src="js/libs/d3/d3.js"></script>
+<script src="js/config.js"></script>
+<script src="js/collection_metrics.js"></script>
+<script src="js/sorter.js"></script>
+<script src="js/libs/cubism/cubism.v1.js"></script>
+<script src="js/full_detail_parallel_coordinates.js"></script>
+
+
+Order:
+<select id="order">
+
+    <option value="horsort">horsort</option>
+    <option value="versort">versort</option>
+    <option value="defaultSetting">defaultSetting</option>
+</select>
+</select>
+
+
+
+
+<div id="slider"></div>
+<div id="marker" class="hidden">
+    <p><span id="value"></span></p>
+</div>
+<div id="mass_container">
+    <div id="cubismChart" class="container" ></div>
+<div id="chart" class="container" style='width:33%;height:1200px;'></div>
+
+<div id="parCoord" class="container" ></div>
+
+</div>
+
+<div id="cubismDetails">
+
+
+    <div id="detailsLine" class="line" style="position: absolute; top: 0px; bottom: 0px; width: 1px; pointer-events: none; "></div>
+</div>
+
+
+
+<script type="text/javascript">
+    var margin = { top: 0, right: 10, bottom: 2, left: 10 },
+            cellWidth=500/300;
+            cellHeight = 4;
+    col_number=300;
+    row_number=7;
+            width = 500, // - margin.left - margin.right,
+            height = (cellHeight)*row_number , // - margin.top - margin.bottom,
+            legendElementWidth = cellWidth*2.5;
+
+   // [0 0 0; 1 1 0;1 1 0; 0 1 1;0 1 1; 1 0 1; 1 0 1; 0 0 0];
+    var data; // a global
+
+
+    var parseDate = d3.time.format("%b %Y").parse;
+
+    var xScale = d3.scale.linear().range([0, width]).domain([0,300]),
+            x2Scale = d3.scale.linear().range([0, width]).domain([0,300]),
+            yScale = d3.scale.linear().range([0,cellHeight*Object.keys(config_features).length]).domain([0,40]);
+
+    var xAxis = d3.svg.axis().scale(xScale).orient("bottom"),
+            xAxis2 = d3.svg.axis().scale(xScale).orient("bottom"),
+            yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+
+    var brush = d3.svg.brush()
+            .x(x2Scale)
+            .on("brush", brushed);
+
+    var svgContext;
+
+    var settingSortingOptions={default:{row:"row",col:"col"},verSort:{row:"sortedRowIndex",col:"col"},horSort:{row:"row",col:"sortedColIndex"}};
+    var settingSorting="default";
+
+
+    var xSampleScale = d3.scale.linear();
+    xSampleScale.range([ 0, window.innerWidth ]).domain([0,300]);
+
+
+    function brushed() {
+
+        xScale.domain(brush.empty() ? x2Scale.domain() : brush.extent());
+        var tempD = new Date("01-Jul-2015 16:00:00");
+
+        xHMTimeScale.domain([new Date(tempD.getTime() + brush.extent()[0] * 300000), new Date(tempD.getTime() + brush.extent()[1] * 300000)]);
+        d3.select("#HMAxis").call(xAxisHM.ticks(12).orient("top"));
+        var widthScale = (brush.extent()[1] - brush.extent()[0]) / (x2Scale.domain()[1] - x2Scale.domain()[0]);
+        var filteredData;
+
+        for (var k in collection_metrics) {
+
+
+                filteredData = [];
+                var dayData = collection_metrics[k].data;
+                for (var i = 0; i < dayData.length; i++) {
+
+                    if (dayData[i][settingSortingOptions[settingSorting].col] < brush.extent()[1] && dayData[i][settingSortingOptions[settingSorting].col] > brush.extent()[0]) {
+                        filteredData.push(dayData[i]);
+                    }
+                }
+
+                update(filteredData, d3.select("#featViz_" + k), widthScale); //sleect all, call(update(this))
+
+
+            }
+
+
+    }
+
+
+    function update(data,svg,widthScale) {
+
+        // DATA JOIN
+        // Join new data with old elements, if any.
+        var text = svg.select(".g3").selectAll(".cell")//JUISTE GROEP SELECTEREN, VANDAAR .g3
+                .data(data, function(d){return d.row+":"+ d.col});
+
+        // UPDATE
+        // Update old elements as needed.
+        text.attr("x", function(d) { return xScale(d[settingSortingOptions[settingSorting].col]); })
+                .attr("y", function(d) { return (d[settingSortingOptions[settingSorting].row]+1) * cellHeight; })
+                .attr("width", function(d) { return ((cellWidth) * 1/widthScale); });
+
+        // ENTER
+        // Create new elements as needed.
+
+        text.enter()
+                .append("rect")
+                .attr("x", function(d) {  return xScale(d[settingSortingOptions[settingSorting].col]); })
+                .attr("y", function(d) { return (d[settingSortingOptions[settingSorting].row]+1) * cellHeight; })
+                .attr("class", function(d){return "cell cell-border cr"+(d.row)+" cc"+(d.col);})
+                .attr("width",((cellWidth) * 1/widthScale))
+                .attr("height", cellHeight)
+                .style("fill", function(d) { return collection_metrics[d.feature]["color"](d.value); })
+                .on("mouseover", function(d){
+                    //highlight text
+                    d3.select(this).classed("cell-hover",true);
+                    d3.selectAll(".rowLabel").classed("text-highlight",function(r,ri){ return ri==(d.row);});
+                    d3.selectAll(".colLabel").classed("text-highlight",function(c,ci){ return ci==(d.col);});
+
+                    //Update the tooltip position and value
+                    d3.select("#tooltip")
+                            .style("left", (d3.event.pageX+10) + "px")
+                            .style("top", (d3.event.pageY-10) + "px")
+                            .select("#value")
+                            .text("data:"+d.value+"\nrow-col-idx:"+d.col+","+d.row+"\ncell-xy "+this.x.baseVal.value+", "+this.y.baseVal.value);
+                    //Show the tooltip
+                    //d3.select("#tooltip").classed("hidden", false);
+                    d3.select("#contPC").remove();
+                    d3.select("#contCUB").remove();
+                    d3.select("#contCUBDet").remove();
+
+                    d3.select("#detailsLine").style("left",xSampleScale(d.col));
+                    drawParallelCoordinates(d3.select("#parCoord").append('div').attr("id","contPC"), d.col, d.row);
+                    draw_cubism(d3.select("#cubismChart").append('div').attr("id","contCUB"), d.row);
+                    draw_cubism_feature(d3.select("#cubismDetails").append('div').attr("id","contCUBDet"), d.feature);
+                })
+                .on("mouseout", function(){
+                    d3.select(this).classed("cell-hover",false);
+                    d3.selectAll(".rowLabel").classed("text-highlight",false);
+                    d3.selectAll(".colLabel").classed("text-highlight",false);
+                    d3.select("#tooltip").classed("hidden", true);
+                })
+        ;
+
+        // EXIT
+        // Remove old elements as needed.
+        text.exit().remove();
+
+    }
+
+
+    d3.json("data/myfile_flattened.json", function(error, json) {
+        if (error) return console.warn(error);
+        data = json;
+
+        add_features()
+
+    });
+    var xHMTimeScale = d3.time.scale().range([ 0, 430 ]).clamp(true).domain([new Date("01-Jul-2015 16:00:00"),new Date("02-Jul-2015 16:00:00")]);
+    var xAxisHM = d3.svg.axis().tickFormat(d3.time.format("%H:%M"))
+            .scale(xHMTimeScale);
+    function add_features(){
+
+
+
+
+
+
+
+        d3.select("#chart").append("svg").attr("height",28).attr("width",500).append("g")
+                .attr("transform", "translate("+margin.left+"," + 28 + ")")
+                .attr("id", "HMAxis")
+                .attr("class", "top axis")
+                .call( xAxisHM.ticks(12).orient("top"));
+
+
+        var feat_keys = Object.keys(config_features);
+        for (var key in config_features){
+            var processedData = getVisualDataForFeature(config_features[key]['type'],key,false);
+            add_metric(key,visualizeIt(key,processedData) ) ;
+
+        }
+
+
+
+
+
+        drawParallelCoordinates(d3.select("#parCoord").append('div').attr("id","contPC"),100,0);
+        draw_cubism(d3.select("#cubismChart").append('div').attr("id","contCUB"),2);
+        draw_cubism_feature(d3.select("#cubismDetails").append('div').attr("id","contCUBDet"), "N");
+
+        svgContext = d3.select("#slider").append("svg").attr("class", "context").attr("height",20).attr("width",width);
+        svgContext.append("g")
+                .attr("class", "x brush")
+                .call(brush)
+                .selectAll("rect")
+                .attr("y", -2)
+                .attr("height", 20);
+    }
+
+
+
+
+    function draw_cubism_feature(container,feature){
+
+
+        var context = cubism.context().step(300000) // Distance between data points in milliseconds
+                .size(300) // Number of data points
+                .stop();   // Fetching from a static data source; don't update values;
+
+
+        var xTimeScale = d3.time.scale().range([ 0, window.innerWidth-100 ]).clamp(true).domain([new Date("01-Jul-2015 16:00:00"),new Date("02-Jul-2015 16:00:00")]);
+
+
+        var xAxis = d3.svg.axis().tickFormat(d3.time.format("%H:%M")).ticks(16)
+                .scale(xTimeScale);
+
+//        d3.select("#markerBody").remove();
+//        var markerBody =  d3.select("#marker").append("div").attr("id","markerBody").selectAll(".featureTooltip")
+//                .data(Object.keys(config_features))
+//                .enter()
+//                .append("div")
+//                .attr("class","featureTooltip");
+//        markerBody.text(function(d){return d;});
+//
+//
+//
+//        function changeMarkerBody(xMouse){
+//            var x = xSampleScale.invert(xMouse);
+//            x = Math.floor(x);
+//            markerBody.text(function(k){
+//                var values = collection_metrics[k].data.filter(function(d){return d.row == day && d.col == x;});
+//                console.log(values);
+//                return values[0].value;
+//            })
+//
+//        }
+//
+//
+//        container.append("svg").attr("id","ruleWrapper").style( "z-index",10).style("position","absolute")
+//                .attr("height",1000)
+//                .attr("width",500)
+//                .on("mousemove", function(){
+//                    //highlight text
+//
+//                    //Update the tooltip position and value
+//                    d3.select("#marker")
+//                            .style("left", (d3.event.pageX) + "px").call(function(){
+//                                changeMarkerBody(d3.event.pageX);
+//                            });
+//                    d3.select("#marker").classed("hidden", false);
+//
+//
+//                });
+
+        container.append("svg").attr("height",28).attr("width",window.innerWidth).append("g")
+                .attr("transform", "translate(0," + 28 + ")")
+
+                .attr("class", "top axis")
+                .call( xAxis.ticks(12).orient("top"));
+
+
+
+        container.append("div")
+                .attr("class", "rule")
+                .call(context.rule());
+
+
+
+        container.selectAll(".horizon")
+                .data([0,1,2,3,4].map(getValue))
+                .enter().insert("div", ".bottom")
+                .attr("class", "horizon detail")
+                .call(function(d){
+                    return (context.horizon())(d);
+                });
+
+        container.selectAll(".horizon")
+                .call(function(d){console.log(d)});
+
+        context.on("focus", function(i) {
+            d3.selectAll(".value").style("right", i == null ? null : context.size() - i + "px");
+        });
+
+        container.append("svg").attr("height",28).attr("width",window.innerWidth).append("g")
+
+                .attr("class", "bottom axis")
+                .call( xAxis.ticks(12).orient("bottom"));
+
+
+
+        // Replace this with context.graphite and graphite.metric!
+        function getValue(day) {
+
+
+
+            var fx = context.metric(function (start, stop, step, callback) {
+                var values = collection_metrics[feature].data.filter(function(d){return d.row == day;});
+
+
+                values = values.map(function(d){return d.value });
+                console.log(feature);
+                console.log(values);
+                callback(null, values);
+
+            }, feature + ": day" + day) ;
+
+            fx.extent = function(){return [config_features[feature].min,config_features[feature].max];};
+            return fx;
+
+        }
+    }
+
+    function draw_cubism(container,day){
+        var context = cubism.context().step(300000) // Distance between data points in milliseconds
+                .size(300) // Number of data points
+                .stop();   // Fetching from a static data source; don't update values;
+
+
+        var xTimeScale = d3.time.scale().range([ 0, 430 ]).clamp(true).domain([new Date("01-Jul-2015 16:00:00"),new Date("02-Jul-2015 16:00:00")]);
+//        var xSampleScale = d3.scale.linear();
+//        xSampleScale.range([ 0, 500 ]).domain([0,300]);
+
+        var xAxis = d3.svg.axis().tickFormat(d3.time.format("%H:%M")).ticks(16)
+                .scale(xTimeScale);
+
+//        d3.select("#markerBody").remove();
+//        var markerBody =  d3.select("#marker").append("div").attr("id","markerBody").selectAll(".featureTooltip")
+//                .data(Object.keys(config_features))
+//                .enter()
+//                .append("div")
+//                .attr("class","featureTooltip");
+//        markerBody.text(function(d){return d;});
+//
+//
+//
+//        function changeMarkerBody(xMouse){
+//            var x = xSampleScale.invert(xMouse);
+//            x = Math.floor(x);
+//            markerBody.text(function(k){
+//                var values = collection_metrics[k].data.filter(function(d){return d.row == day && d.col == x;});
+//
+//                return values[0].value;
+//            })
+//
+//        }
+//
+//
+//        container.append("svg").attr("id","ruleWrapper").style( "z-index",10).style("position","absolute")
+//                .attr("height",1000)
+//                .attr("width",500)
+//                .on("mousemove", function(){
+//                    //highlight text
+//
+//                    //Update the tooltip position and value
+//                    d3.select("#marker")
+//                            .style("left", (d3.event.pageX) + "px").call(function(){
+//                                changeMarkerBody(d3.event.pageX);
+//                            });
+//                    d3.select("#marker").classed("hidden", false);
+//
+//
+//                });
+
+        container.append("svg").attr("height",28).attr("width",500).append("g")
+                .attr("transform", "translate(0," + 28 + ")")
+
+                .attr("class", "top axis")
+                .call( xAxis.ticks(12).orient("top"));
+
+
+
+        container.append("div")
+                .attr("class", "rule")
+                .call(context.rule());
+
+
+
+        container.selectAll(".horizon")
+                .data(Object.keys(config_features).map(getValue))
+                .enter().insert("div", ".bottom")
+                .attr("class", "horizon")
+                .call(function(d){
+                    return (context.horizon())(d);
+                });
+
+
+
+        context.on("focus", function(i) {
+            d3.selectAll(".value").style("right", i == null ? null : context.size() - i + "px");
+        });
+
+        container.append("svg").attr("height",28).attr("width",500).append("g")
+
+                .attr("class", "bottom axis")
+                .call( xAxis.ticks(12).orient("bottom"));
+
+
+
+        // Replace this with context.graphite and graphite.metric!
+        function getValue(name) {
+
+            var middle = (config_features[name].max + config_features[name].min)/2;
+
+
+            var fx = context.metric(function (start, stop, step, callback) {
+                var values = collection_metrics[name].data.filter(function(d){return d.row == day;});
+                values = values.map(function(d){return d.value - 0});
+                callback(null, values);
+
+            }, name) ;
+
+            fx.extent = function(){return [config_features[name].min,config_features[name].max]};
+            return fx;
+
+        }
+    }
+
+
+    //default --> row == date, col == epoch, val = featureVal
+    //for now: mapping val to [-10,10]
+    //horSort --> quantity horSortRow/Col
+    //verSort --> for distribution vertSortRow/Col
+    function getVisualDataForFeature(category, feature,bool_fft){
+        var results = {};
+        var data_objects = data['user1']['data_obj'];
+        var nrRows = data_objects.length;
+        var nrColumns = 0;
+
+
+        var rearrangedObjects = rearrangeData(1,data_objects,category,300);
+
+        nrColumns =rearrangedObjects[4][feature].length; //hacky
+        for (var i = 0; i<rearrangedObjects.length; i++){
+            var signal;
+            signal = rearrangedObjects[i][feature];
+
+
+            //nrColumns = signal.length;
+
+            for(var j=0; j<signal.length;j++){
+                if(signal[j] !== null){
+                    results[i+","+j]={value:signal[j],row:i,col:j,sortedColIndex:null,sortedRowIndex:null,feature:feature};
+                }
+
+
+            }
+
+        }
+
+
+
+
+        addSortedResults(results,nrRows,nrColumns);
+        var resultArray = [];
+        for(var key in results) {
+            resultArray.push(results[key]);
+        }
+        return resultArray;
+
+    }
+    //hours_interval default 24u
+    function rearrangeData(hours_interval,data_objects,category,epoch){ //epoch meegeven bij visualisatie + preprocessed array vervangen door dictionary, more flattening in matlab
+        var resultDataObjects=[];
+        var tempStart = data_objects[0]['date'];
+        var tempEnd = tempStart + hours_interval;
+
+        var signals;
+        var columns = 0;
+        var startDateDO = data_objects[0]['date'];
+        var endDateDO = data_objects[0]['end_date'];
+
+        resultDataObjects.push({date:tempStart});
+
+        for (var i = 0; i<data_objects.length; i++) {
+            startDateDO = data_objects[i]['date'];
+            //skip columns --> here
+            var diff = startDateDO - endDateDO;
+            var columnsToSkip = Math.floor(diff / (epoch / (24*3600.0)));
+
+            if(columnsToSkip>0){
+                columns = columns + columnsToSkip;
+            }
+
+
+            for (var j = 0; j < columnsToSkip; j++) {
+
+                resultDataObjects[resultDataObjects.length - 1][key].push(null);
+            }
+            endDateDO = data_objects[i]['end_date'];
+            signals = data_objects[i].preprocessed[1][category];
+
+
+            var keys = Object.keys(signals);
+            var firstKey = keys[0];
+            var firstSignal = signals[firstKey].slice();
+            for (var j = 0; j < firstSignal.length; j++) {
+
+                if (j * (epoch/(24*3600.0)) + startDateDO > tempEnd) {
+
+                    resultDataObjects.push({date: tempEnd});//binding?
+
+
+                    tempStart = tempEnd;
+                    tempEnd = tempStart + hours_interval;
+
+                    columns = 0;
+
+                    for (var k = 0; k < keys.length; k++) {
+                        var key = keys[k];
+                        resultDataObjects[resultDataObjects.length - 1][key] = [];
+                    }
+
+
+                }
+
+                for (var k = 0; k < keys.length; k++) {
+                    var key = keys[k];
+
+                    if (typeof resultDataObjects[resultDataObjects.length - 1][key] === 'undefined') {
+                        (resultDataObjects[resultDataObjects.length - 1])[key] = [];
+                    }
+                    (resultDataObjects[resultDataObjects.length - 1])[key].push(signals[key][j]);
+                }
+                columns = columns + 1;
+
+
+            }
+        }
+
+        return resultDataObjects;
+    }
+
+    function addSortedResults(matObjects,nrRows,nrColumns){
+
+        horSort(matObjects,nrRows,nrColumns);
+        verSort(matObjects,nrRows,nrColumns);
+    }
+
+    function horSort(matObjects,nrRows,nrColumns){
+        var arr;
+        for (var i= 0;i<nrRows; i++){
+            arr=[];
+            for (var j= 0;j<nrColumns; j++){
+                arr.push(matObjects[i+","+j]);
+
+            }
+            arr.sort(function(a, b){return a.value- b.value});
+            for (var j= 0;j<nrColumns; j++){
+                if(typeof arr[j] !== 'undefined'){
+                    arr[j]['sortedColIndex'] = j;
+                }
+
+            }
+        }
+    }
+
+    function verSort(matObjects,nrRows,nrColumns){
+        var arr ;
+        for (var j= 0;j<nrColumns; j++){
+            arr =  [];
+            for (var i= 0;i<nrRows; i++){
+                arr.push(matObjects[i+","+j]);
+            }
+            arr.sort(function(a, b){return a.value- b.value});
+            for (var i= 0;i<nrRows; i++){
+                if(typeof arr[i] !== 'undefined') {
+                    arr[i]['sortedRowIndex'] = i;
+                }
+            }
+        }
+
+    }
+
+
+
+
+
+    function visualizeIt(feature,data){
+
+                var colorScale = d3.scale.quantile()
+                        .domain([ config_features[feature]['min'] ,  config_features[feature]['max']])
+                        .range(config_features[feature]['color']);
+
+                var svg = d3.select("#chart").append("svg").attr("class", "featureHM").attr("id","featViz_"+feature)
+                                .attr("width", width + margin.left + margin.right)
+                                .attr("height", height + margin.top + margin.bottom)
+                                .append("g")
+                                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                        ;
+
+
+                var heatMap = svg.append("g").attr("class","g3")
+                                .selectAll(".cellg")
+                                .data(data,function(d){return d.row+":"+d.col;})
+                                .enter()
+                                .append("rect")
+                                .attr("x", function(d) {  return xScale(d[settingSortingOptions[settingSorting].col]); })
+                                .attr("y", function(d) { return (d[settingSortingOptions[settingSorting].row]+1) * cellHeight; })
+                                .attr("class", function(d){return "cell cell-border cr"+(d.row)+" cc"+(d.col);})
+                                .attr("width",((cellWidth) ))
+                                .attr("height", cellHeight)
+                                .style("fill", function(d) { return colorScale(d.value); })
+                                .on("mouseover", function(d){
+                                    //highlight text
+                                    d3.select(this).classed("cell-hover",true);
+                                    d3.selectAll(".rowLabel").classed("text-highlight",function(r,ri){ return ri==(d.row);});
+                                    d3.selectAll(".colLabel").classed("text-highlight",function(c,ci){ return ci==(d.col);});
+
+                                    //Update the tooltip position and value
+                                    d3.select("#tooltip")
+                                            .style("left", (d3.event.pageX+10) + "px")
+                                            .style("top", (d3.event.pageY-10) + "px")
+                                            .select("#value")
+                                            .text("data:"+d.value+"\nrow-col-idx:"+d.col+","+d.row+"\ncell-xy "+this.x.baseVal.value+", "+this.y.baseVal.value);
+                                    //Show the tooltip
+                                    //d3.select("#tooltip").classed("hidden", false);
+                                    d3.select("#detailsLine").style("left",xSampleScale(d.col));
+                                    d3.select("#contPC").remove();
+                                    d3.select("#contCUB").remove();
+                                    d3.select("#contCUBDet").remove();
+
+
+                                    drawParallelCoordinates(d3.select("#parCoord").append('div').attr("id","contPC"), d.col, d.row);
+                                    draw_cubism(d3.select("#cubismChart").append('div').attr("id","contCUB"), d.row);
+                                    draw_cubism_feature(d3.select("#cubismDetails").append('div').attr("id","contCUBDet"), d.feature);
+                                })
+                                .on("mouseout", function(){
+                                    d3.select(this).classed("cell-hover",false);
+                                    d3.selectAll(".rowLabel").classed("text-highlight",false);
+                                    d3.selectAll(".colLabel").classed("text-highlight",false);
+                                    d3.select("#tooltip").classed("hidden", true);
+                                })
+                        ;
+
+
+
+
+                d3.select("#order").on("change",function(){
+                    order(this.value);
+                });
+
+
+
+
+            return {svg:svg, legend:null, heatMap:heatMap, data:data, color:colorScale}
+            }
+</script>

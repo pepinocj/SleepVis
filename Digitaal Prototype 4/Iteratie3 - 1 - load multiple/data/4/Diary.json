@@ -1,0 +1,294 @@
+{
+    "diaryEntries": [{
+        "date": "2016-04-20 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "moeilijk opgestaan. les. ",
+                "MIDDAG": "gekookt. ",
+                "NAMIDDAG": "gewandeld. koffie gaan drinken. gewerkt voor school (laptop)",
+                "AVOND": "",
+                "LAATSTE_UUR": "",
+                "NET_VOOR_HET_SLAPENGAAN": ""
+            },
+            "sleep_times": [{
+                "duration": "",
+                "start": "",
+                "label": "EMA"
+            }, {
+                "duration": "",
+                "start": "",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-19 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "gezwommen.",
+                "MIDDAG": "gewerkt voor school.",
+                "NAMIDDAG": "gewandeld. gaan uiteten. ",
+                "AVOND": "niks speciaals.",
+                "LAATSTE_UUR": "geknutseld.",
+                "NET_VOOR_HET_SLAPENGAAN": "geknutseld."
+            },
+            "sleep_times": [{
+                "duration": 15,
+                "start": "1970-01-01 05:45:00",
+                "label": "WAKE"
+            }, {
+                "duration": 10,
+                "start": "1970-01-01 06:30:00",
+                "label": "WAKE"
+            }, {
+                "duration": 3,
+                "start": "1970-01-01 08:10:00",
+                "label": "EMA"
+            }, {
+                "duration": 20,
+                "start": "1970-01-01 23:45:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-18 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "gewerkt op laptop.",
+                "MIDDAG": "gewinkeld.",
+                "NAMIDDAG": "schoolwerk (laptop). ",
+                "AVOND": "niks speciaal.",
+                "LAATSTE_UUR": "niks speciaals.",
+                "NET_VOOR_HET_SLAPENGAAN": "\/"
+            },
+            "sleep_times": [{
+                "duration": 10,
+                "start": "1970-01-01 06:30:00",
+                "label": "WAKE"
+            }, {
+                "duration": 5,
+                "start": "1970-01-01 06:40:00",
+                "label": "EMA"
+            }, {
+                "duration": 30,
+                "start": "1970-01-01 05:45:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-17 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "geslapen.",
+                "MIDDAG": "familie diner",
+                "NAMIDDAG": "gesport. ",
+                "AVOND": "trein genomen en gewandeld.",
+                "LAATSTE_UUR": "opgeruimd.",
+                "NET_VOOR_HET_SLAPENGAAN": "opgeruimd."
+            },
+            "sleep_times": [{
+                "duration": 10,
+                "start": "1970-01-01 00:00:00",
+                "label": "WAKE"
+            }, {
+                "duration": 15,
+                "start": "1970-01-01 07:00:00",
+                "label": "EMA"
+            }, {
+                "duration": 15,
+                "start": "1970-01-01 23:00:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-16 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "computer werk.",
+                "MIDDAG": "in totaal 1u gereden. concert bekeken. ",
+                "NAMIDDAG": "gewinkeld. gaan uiteten.",
+                "AVOND": "feestje",
+                "LAATSTE_UUR": "fuif. auto gereden. ",
+                "NET_VOOR_HET_SLAPENGAAN": "niks speciaals."
+            },
+            "sleep_times": [{
+                "duration": 5,
+                "start": "1970-01-01 07:30:00",
+                "label": "EMA"
+            }, {
+                "duration": 5,
+                "start": "1970-01-01 00:00:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-15 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "computerwerk",
+                "MIDDAG": "niks speciaals",
+                "NAMIDDAG": "gedanst. schoolwerk (laptop). ",
+                "AVOND": "televisie gekeken.",
+                "LAATSTE_UUR": "televisie, iets kleins gegeten. ",
+                "NET_VOOR_HET_SLAPENGAAN": "niks speciaals."
+            },
+            "sleep_times": [{
+                "duration": 20,
+                "start": "1970-01-01 05:00:00",
+                "label": "WAKE"
+            }, {
+                "duration": 10,
+                "start": "1970-01-01 07:00:00",
+                "label": "EMA"
+            }, {
+                "duration": 30,
+                "start": "1970-01-01 23:00:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-14 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "gewerkt voor school. ",
+                "MIDDAG": "niks speciaals.",
+                "NAMIDDAG": "gewinkeld. trein naar huis genomen. ",
+                "AVOND": "TV gekeken.",
+                "LAATSTE_UUR": "TV gekeken.",
+                "NET_VOOR_HET_SLAPENGAAN": "niks speciaals."
+            },
+            "sleep_times": [{
+                "duration": 10,
+                "start": "1970-01-01 06:30:00",
+                "label": "WAKE"
+            }, {
+                "duration": 35,
+                "start": "1970-01-01 07:30:00",
+                "label": "EMA"
+            }, {
+                "duration": 30,
+                "start": "1970-01-01 22:36:00",
+                "label": "SOL"
+            }]
+        }
+    }, {
+        "date": "2016-04-13 00:00:00",
+        "entry": {
+            "day_diary": {
+                "VOORMIDDAG": "vroeg opstaan, presentatie voorbereiden.",
+                "MIDDAG": "presentatie geven. Brood gaan halen.",
+                "NAMIDDAG": "gewerkt voor school (laptop). gaan uiteten: wandeling.",
+                "AVOND": "gewerkt voor school.",
+                "LAATSTE_UUR": "gewerkt voor school. ",
+                "NET_VOOR_HET_SLAPENGAAN": "tanden poetsen. water gedronken "
+            },
+            "sleep_times": [{
+                "duration": 5,
+                "start": "1970-01-01 00:00:00",
+                "label": "WAKE"
+            }, {
+                "duration": 10,
+                "start": "1970-01-01 06:00:00",
+                "label": "WAKE"
+            }, {
+                "duration": 5,
+                "start": "1970-01-01 07:00:00",
+                "label": "EMA"
+            }, {
+                "duration": 30,
+                "start": "1970-01-01 22:00:00",
+                "label": "SOL"
+            }]
+        }
+    }],
+    "events": [{
+        "duration": 3,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-20 07:00:00",
+        "label": "TOILET"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-19 16:45:00",
+        "label": "COFFEE"
+    }, {
+        "duration": 120,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-19 14:00:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 30,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-17 22:00:00",
+        "label": "WALKING"
+    }, {
+        "duration": 30,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-17 16:30:00",
+        "label": "SPORT"
+    }, {
+        "duration": 130,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-17 07:45:00",
+        "label": "NAP"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "dansen.",
+        "start": "2016-04-16 23:00:00",
+        "label": "OTHER"
+    }, {
+        "duration": 60,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-16 00:00:00",
+        "label": "WALKING"
+    }, {
+        "duration": 60,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-15 23:00:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 180,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-15 16:00:00",
+        "label": "LAPTOP"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "",
+        "start": "2016-04-15 15:15:00",
+        "label": "COFFEE"
+    }, {
+        "duration": 0,
+        "hasDuration": false,
+        "notes": "Buikpijn",
+        "start": "2016-04-14 22:46:00",
+        "label": "OTHER"
+    }, {
+        "duration": 120,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-14 20:20:00",
+        "label": "TELEVISION"
+    }, {
+        "duration": 10,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-13 22:30:00",
+        "label": "SMARTPHONE"
+    }, {
+        "duration": 45,
+        "hasDuration": true,
+        "notes": "",
+        "start": "2016-04-13 22:00:00",
+        "label": "READING"
+    }]
+}

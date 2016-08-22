@@ -1,0 +1,12 @@
+2015-06-01: Release of TSA 4.3.0
+
+- fix version of Matlab version with Octave 4.0 (bug #44989)
+
+
+2015-01-24: Release of TSA 4.2.9
+
+- support for MacOSX added                
+  (tested on Homebrew Octave)
+
+2015-01-18
+	maintenance release: fixes minor bugs and configuration issues

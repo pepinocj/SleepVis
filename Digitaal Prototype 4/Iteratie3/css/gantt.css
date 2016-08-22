@@ -1,0 +1,217 @@
+html,body,#wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+
+
+.otherFeature{
+        fill: grey;
+     
+    stroke:grey;
+    border-color:grey;
+}
+
+.chart {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+
+
+
+
+
+.subjectiveFeatureValue{
+    opacity:0;
+    stroke: black;
+    stroke-width:1;
+
+}
+
+
+.subjectiveFeatureSelected text{
+    fill:black;
+    opacity:1;
+
+}
+
+.wakePattern{
+    fill:#CC0000;
+    
+}
+
+
+.wakeBPattern1{
+    fill:#000000;
+    
+}
+
+.wakeBPattern2{
+    fill:#FFFFFF;
+    
+}
+
+
+
+.SOL {
+    
+/*
+    fill:url(#pattern1);
+    fill:purple;
+    stroke:#CC0000;
+    background  :"black",
+    border-color:#000000;
+*/
+    fill: #CC0000;
+     
+    stroke:#CC0000;
+    border-color:#CC0000;
+    stroke-width: 1;
+
+}
+
+.WASO {
+    fill: #CC0000;
+     
+    stroke:#CC0000;
+    border-color:#CC0000;
+    stroke-width: 1;
+}
+
+.TWT {
+    fill: #CC0000;
+     
+    stroke:#CC0000;
+    border-color:#CC0000;
+    stroke-width: 1;
+}
+
+.EMA {
+/*
+    fill:url(#pattern2);
+    fill: orange;
+    stroke:#CC0000;
+    border-color: #000000;
+*/
+    fill: #CC0000;
+     
+    stroke:#CC0000;
+    border-color:#CC0000;
+    stroke-width: 1;
+}
+
+.dayData .bar{
+    stroke-width: 1;
+    stroke:#000000;
+}
+
+
+
+.SLEEP {
+    fill: #669900;
+     
+    stroke:#669900;
+    border-color: #669900;
+    
+}
+
+.TST {
+    fill: #669900;
+    
+    stroke:#669900;
+    border-color: #669900;
+}
+
+.TIB {
+    fill: burlywood;
+    
+    stroke-width:2;
+    stroke:black;
+}
+
+.TIB text{
+    fill:black;
+    stroke-width:0;
+    
+}
+
+
+.dayData .subjectiveFeatureSelected{
+    opacity:1;
+    border-color:black;
+    stroke:black;
+    stroke-width:0;
+    border-style: solid;
+    border-width: 0;
+}
+
+.subjectiveFeatureSelected{
+    opacity:0.80;
+    border-color:black;
+    stroke:black;
+    stroke-width:3;
+    border-style: solid;
+    border-width: 2;
+}
+
+
+
+/*
+.nightmare{
+    fill: black;
+}
+
+.toilet{
+    fill:violet;
+}
+
+
+.light_off{
+    fill:grey;
+}
+
+.M{
+    fill:#0000b4;
+}
+
+.C{
+    fill:#0082ca;
+}
+
+.A{
+    fill:#0094ff;
+}
+
+.Sport{
+    fill:#0d4bcf
+}
+
+.Dutjes{
+    fill:#0066AE
+}
+
+.Fat_Food{
+    fill:#0066AA
+}
+*/
+
+.notSelected{
+    opacity:0.15;
+}
+
+
+
+
+.overlappingGannt{
+    stroke-width:4;
+    opacity:0.5;
+    
+}
+
+
+
+
+
+
+

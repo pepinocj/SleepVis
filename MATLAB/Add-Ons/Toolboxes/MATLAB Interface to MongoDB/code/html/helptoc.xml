@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding="utf-8"?>
+<!--- Copyright 2015 The MathWorks, Inc. -->
+<toc version="2.0">
+    <tocitem target="mytoolbox.html" >
+        MATLAB Interface to MongoDB
+        <tocitem target="readme.html" image="HelpIcon.GETTING_STARTED">
+            Getting Started with MATLAB Interface to MongoDB
+        </tocitem>
+        <tocitem target="Contents.html"> Functions
+            <tocitem target="mongodatabase.html">mongodatabase</tocitem>
+            <tocitem target="get.html">get</tocitem>
+            <tocitem target="collectionexists.html">collectionexists</tocitem>
+            <tocitem target="collectioninfo.html">collectioninfo</tocitem>
+            <tocitem target="count.html">count</tocitem>
+            <tocitem target="find.html">find</tocitem>
+            <tocitem target="isopen.html">isopen</tocitem>
+            <tocitem target="close.html">close</tocitem>
+        </tocitem>
+        <tocitem target="MATLABMongoDBWorkflow.html" image="HelpIcon.EXAMPLES">
+            Workflow example
+        </tocitem>
+    </tocitem>
+</toc>
